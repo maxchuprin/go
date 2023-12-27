@@ -1,14 +1,21 @@
 package storage
 
+import "time"
+
 // Post - публикация.
 type Post struct {
-	ID          int
-	Title       string
-	Content     string
-	AuthorID    int
-	AuthorName  string
-	CreatedAt   int64
-	PublishedAt int64
+	ID          int       `json:"id" bson:"id"`
+	Title       string    `json:"title" bson:"title"`
+	Content     string    `json:"content" bson:"content"`
+	AuthorID    int       `json:"author_id" bson:"author_id"`
+	AuthorName  string    `json:"author_name" bson:"author_name"`
+	CreatedAt   time.Time `json:"created_at" bson:"created_at"`
+	PublishedAt time.Time `json:"published_at" bson:"published_at"`
+}
+
+type Author struct {
+	ID   int    `bson:"_id"`
+	Name string `bson:"name"`
 }
 
 // Interface задаёт контракт на работу с БД.
